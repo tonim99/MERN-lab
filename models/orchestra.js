@@ -1,13 +1,14 @@
 const { Schema, model } = require("mongoose")
+const mongoose = require("../db/connection")
 
 const orchestraSchema = new Schema(
     {
+        "name": String,
         "conductor": String,
-        "piano": String,
-        "section": []
+        "instruments": [{type: mongoose.Types.ObjectId, ref: "Instrument"}]
     }
 )
 
-const Orchestra = model('orchestra', orchestraSchema)
+const Orchestra = model('Orchestra', orchestraSchema)
 
 module.exports = Orchestra
